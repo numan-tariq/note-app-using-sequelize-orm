@@ -9,5 +9,6 @@ router.get('/search', controller.getEntityByNoteAndTag);
 router.post('', controller.insertNewNote);
 router.get('/:id', controller.getEntityByID);
 router.put('/:id', controller.updateANote);
+router.delete('/:id', controller.deleteANote);
 
 module.exports = router;

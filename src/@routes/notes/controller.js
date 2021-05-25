@@ -99,3 +99,17 @@ exports.insertNewNote = async(req, res) => {
     return handleError(res, err);
   }
 }
+
+/**
+ * @description delete note
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
+ exports.deleteANote = async(req, res) => {
+  try {
+    await notes.deleteNote(req.params.id, res);
+  } catch (err) {
+    return handleError(res, err);
+  }
+}

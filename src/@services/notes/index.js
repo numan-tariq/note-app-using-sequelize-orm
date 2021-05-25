@@ -101,3 +101,18 @@ exports.insertNote = async(req, res) => {
     })
   });
 }
+
+/**
+ * @description delete note
+ * @param {*} req 
+ * @param {*} res 
+ */
+ exports.deleteNote = async(id, res) => {
+  return await Note.findByPk(id)
+  .then((note) => {
+    note.destroy();
+  })
+  .then((note) => {
+    res.sendStatus(200);
+  });
+}
