@@ -68,3 +68,36 @@ exports.getByTag = async(req, res) => {
     res.json(notes)
   });
 }
+
+/**
+ * @description insert new note
+ * @param {*} req 
+ * @param {*} res 
+ */
+exports.insertNote = async(req, res) => {
+  await Note.create({
+    note: req.body.note,
+    tag: req.body.tag
+  })
+  .then((note) => {
+    res.json(note);
+  });
+}
+
+/**
+ * @description update note
+ * @param {*} req 
+ * @param {*} res 
+ */
+ exports.updateNote = async(id, req, res) => {
+  return await Note.findByPk(id)
+  .then((note) => {
+    note.update({
+      note: req.body.note,
+      tag: req.body.tag
+    })
+    .then((note) => {
+      res.json(note);
+    })
+  });
+}

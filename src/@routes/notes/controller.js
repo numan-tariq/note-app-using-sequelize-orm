@@ -71,3 +71,31 @@ exports.getAllEntity = async(req, res, next) => {
     return handleError(res, err);
   }
 }
+
+/**
+ * @description insert new note
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
+exports.insertNewNote = async(req, res) => {
+  try {
+    await notes.insertNote(req, res);
+  } catch (err) {
+    return handleError(res, err);
+  }
+}
+
+/**
+ * @description update note
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
+ exports.updateANote = async(req, res) => {
+  try {
+    await notes.updateNote(req.params.id, req, res);
+  } catch (err) {
+    return handleError(res, err);
+  }
+}
