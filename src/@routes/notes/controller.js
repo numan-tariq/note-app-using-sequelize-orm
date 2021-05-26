@@ -22,51 +22,10 @@ const { handleError } = require('../../@utils/common/helper');
  * @param {*} res
  * @returns all entities
  */
-exports.getAllEntity = async(req, res, next) => {
+exports.getAllNotes = async(req, res, next) => {
   try {
-    await notes.getEntities(res);
+    await notes.getNotes(res);
     return res.status(200);
-  } catch (err) {
-    return handleError(res, err);
-  }
-}
-/**
- * @description get entity by id
- * @param {*} req
- * @param {*} res
- * @returns entity
- */
- exports.getEntityByID = async(req, res) => {
-  try {
-    await notes.getByID(req, res);
-  } catch (err) {
-    return handleError(res, err);
-  }
-}
-
-/**
- * @description get entity by Note and Tag
- * @param {*} req
- * @param {*} res
- * @returns entity
- */
- exports.getEntityByNoteAndTag = async(req, res) => {
-  try {
-    await notes.getByNameAndTag(req, res);
-  } catch (err) {
-    return handleError(res, err);
-  }
-}
-
-/**
- * @description get entity by Tag
- * @param {*} req
- * @param {*} res
- * @returns entity
- */
- exports.getEntityByTag = async(req, res) => {
-  try {
-    await notes.getByTag(req, res);
   } catch (err) {
     return handleError(res, err);
   }
