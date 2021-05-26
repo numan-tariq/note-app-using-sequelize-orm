@@ -1,12 +1,12 @@
-const { handleError } = require('../@shared/common/helper');
+const { handleError } = require('../@utils/common/helper');
 const jwt = require('jsonwebtoken');
 
 /**
  * @description Authentication Middleware
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
- * @returns 
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ * @returns
  */
 exports.isAuthenticated = (req, res, next) => {
   try {
