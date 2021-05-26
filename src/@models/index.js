@@ -4,7 +4,7 @@ const sequelize = new Sequelize({
   storage: './database.sqlite'
 })
 
-const Note = sequelize.define('notes', { note: Sequelize.TEXT, tag: Sequelize.STRING });
+//const Note = sequelize.define('notes', { note: Sequelize.TEXT, tag: Sequelize.STRING });
 
 sequelize.sync({ force: true })
   .then(() => {
