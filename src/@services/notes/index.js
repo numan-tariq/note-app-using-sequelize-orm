@@ -6,10 +6,9 @@ const { notes, devices } = require('../../@models');
  * @param {*} res 
  */
 exports.insertNote = async(req, res) => {
-
   const device = await devices.findOne({
     where: {
-      deviceUUID: req.body.deviceUUID
+      deviceUUID: req.headers['uuid']
     },
     attributes: ['id']
   });
