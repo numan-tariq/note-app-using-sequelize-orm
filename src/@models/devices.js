@@ -1,13 +1,14 @@
 'use strict';
-const { Model } = require('sequelize');
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class notes extends Model {
+  class devices extends Model {
     static associate(models) {
       // define association here
-      
     }
   };
-  notes.init({
+  devices.init({
     id: 
     {
       type: DataTypes.INTEGER,
@@ -15,14 +16,16 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       autoIncrement: true
     },
-    note: {
+    deviceUUID: {
+      type: DataTypes.UUID
+    },
+    deviceName: {
       type: DataTypes.TEXT,
       allowNull: false
     }
   }, {
     sequelize,
-    modelName: 'notes',
+    modelName: 'devices',
   });
-
-  return notes;
+  return devices;
 };

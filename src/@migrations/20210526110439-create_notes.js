@@ -2,12 +2,6 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    /**
-     * Add altering commands here.
-     *
-     * Example:
-     * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
-     */
     await queryInterface.createTable('notes', {
       id: {
         type: Sequelize.INTEGER,
@@ -24,25 +18,19 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false
       },
-      userId: {
+      deviceId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
         reference: {
           model: 'users',
           key: 'id',
-          as: 'userId'
+          as: 'deviceId'
         }
       }
     });
   },
 
   down: async (queryInterface, Sequelize) => {
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
     await queryInterface.dropTable('notes');
   }
 };
