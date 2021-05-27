@@ -4,7 +4,10 @@ module.exports = (sequelize, DataTypes) => {
   class notes extends Model {
     static associate(models) {
       // define association here
-      
+      notes.belongsTo(models.devices, {
+        foreignKey: 'deviceId',
+        onDelete: 'CASCADE'
+      })
     }
   };
   notes.init({

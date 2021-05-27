@@ -1,4 +1,4 @@
-const { devices } = require('../../@models');
+const { devices, notes } = require('../../@models');
 const {v4 : uuidv4} = require('uuid')
 
 /**
@@ -13,6 +13,9 @@ exports.insertDevice = async(req, res) => {
   })
   .then((device) => {
     res.json(device);
+  })
+  .catch((error) => {
+    res.status(400).send(error)
   });
 }
 
@@ -26,9 +29,34 @@ exports.getDevices = async(res) => {
   return await devices.findAll()
     .then((device) => {
       res.json(device);
+    })
+    .catch((error) => {
+      res.status(400).send(error)
     });
 }
-
+/**
+ * @description Get all Notes of Device
+ * @param {*} req 
+ * @param {*} res 
+ * @returns all Notes
+ */
+ exports.getAllNotesDevices = async(req, res) => {
+  return await devices.findByPk(req.params.id, {
+    include: [{
+      model: notes,
+      as: 'notes'
+    }]
+  })
+  .then((device) => {
+    if(!device) {
+      return res.status(404).send({ message: 'Device Not Found' });
+    }
+    res.json(device);
+  })
+  .catch((error) => {
+    res.status(400).send(error)
+  });
+}
 
 /**
  * @description update device
@@ -44,6 +72,9 @@ exports.getDevices = async(res) => {
     .then((device) => {
       res.json(device);
     })
+  })
+  .catch((error) => {
+    res.status(400).send(error)
   });
 }
 
@@ -59,5 +90,8 @@ exports.getDevices = async(res) => {
   })
   .then(() => {
     res.sendStatus(200);
+  })
+  .catch((error) => {
+    res.status(400).send(error)
   });
 }

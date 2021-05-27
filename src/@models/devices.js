@@ -4,6 +4,10 @@ module.exports = (sequelize, DataTypes) => {
   class devices extends Model {
     static associate(models) {
       // define association here
+      devices.hasMany(models.notes, {
+        foreignKey: 'deviceId',
+        as: 'notes'
+      });
     }
   };
   devices.init({

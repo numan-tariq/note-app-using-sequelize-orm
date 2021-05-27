@@ -18,6 +18,8 @@ exports.insertNote = async(req, res) => {
   })
   .then((note) => {
     res.json(note);
+  }).catch((error) => {
+    res.status(400).send(error)
   });
 }
 
@@ -31,6 +33,9 @@ exports.getNotes = async(res) => {
   return await notes.findAll()
     .then((note) => {
       res.json(note);
+    })
+    .catch((error) => {
+      res.status(400).send(error)
     });
 }
 
@@ -49,6 +54,8 @@ exports.getNotes = async(res) => {
     .then((note) => {
       res.json(note);
     })
+  }).catch((error) => {
+    res.status(400).send(error)
   });
 }
 
@@ -64,5 +71,7 @@ exports.getNotes = async(res) => {
   })
   .then(() => {
     res.sendStatus(200);
+  }).catch((error) => {
+    res.status(400).send(error)
   });
 }

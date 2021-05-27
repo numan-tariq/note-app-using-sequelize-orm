@@ -32,6 +32,21 @@ exports.getAllDevices = async(req, res, next) => {
 }
 
 /**
+ * @description Get all devices
+ * @param {*} req
+ * @param {*} res
+ * @returns all devices
+ */
+ exports.getAllNotesOfDevice = async(req, res, next) => {
+  try {
+    await devices.getAllNotesDevices(req, res);
+    return res.status(200);
+  } catch (err) {
+    return handleError(res, err);
+  }
+}
+
+/**
  * @description insert new device
  * @param {*} req
  * @param {*} res
