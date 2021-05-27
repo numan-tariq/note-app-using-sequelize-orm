@@ -8,31 +8,39 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    await queryInterface.createTable('notes', {
+     await queryInterface.createTable('users', { 
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false,
         autoIncrement: true
       },
-      note: Sequelize.TEXT,
-      createdAt: {
-        type: Sequelize.DATE,
+      firstName: {
+        type: Sequelize.STRING,
         allowNull: false
       },
-      updatedAt: {
-        type: Sequelize.DATE,
+      lastName: {
+        type: Sequelize.STRING,
         allowNull: false
       },
-      userId: {
-        type: Sequelize.INTEGER,
-        onDelete: 'CASCADE',
-        reference: {
-          model: 'users',
-          key: 'id',
-          as: 'userId'
+      email: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        validate: {
+         isEmail: true 
         }
-      }
+      },
+      password: {
+        type: Sequelize.STRING,
+        validate: {
+          len: { 
+             args: [7, 20],
+             msg: "The password length should be between 7 and 20 characters."
+          }
+       }
+      },
+      createdAt: Sequelize.DATE,
+      updatedAt: Sequelize.DATE
     });
   },
 
@@ -43,6 +51,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    await queryInterface.dropTable('notes');
+     await queryInterface.dropTable('users');
   }
 };

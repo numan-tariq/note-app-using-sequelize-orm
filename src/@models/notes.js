@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      notes.belongsTo(models.users, {
+        foreignKey: 'userId',
+        onDelete: 'CASCADE'
+      })
     }
   };
   notes.init({
@@ -27,5 +31,6 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'notes',
   });
+  
   return notes;
 };
