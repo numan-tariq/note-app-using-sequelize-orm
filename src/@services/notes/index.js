@@ -1,4 +1,4 @@
-const { notes } = require('../../@models');
+const { notes, devices } = require('../../@models');
 
 /**
  * @description insert new note
@@ -6,8 +6,15 @@ const { notes } = require('../../@models');
  * @param {*} res 
  */
 exports.insertNote = async(req, res) => {
+
+  const device = await devices.findOne({
+    where: {
+      deviceUUID: req.body.deviceUUID
+    },
+    attributes: ['id']
+  });
   return notes.create({
-    id: req.body.id,
+    deviceId: device.id,
     note: req.body.note
   })
   .then((note) => {

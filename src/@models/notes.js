@@ -18,6 +18,9 @@ module.exports = (sequelize, DataTypes) => {
     note: {
       type: DataTypes.TEXT,
       allowNull: false
+    },
+    deviceId: {
+      type: DataTypes.INTEGER
     }
   }, {
     sequelize,

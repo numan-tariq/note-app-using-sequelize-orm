@@ -10,7 +10,9 @@ module.exports = {
          allowNull: false
        },
        deviceUUID: {
-        type: Sequelize.UUID
+        allowNull: false,
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4
        },
        deviceName: {
          type: Sequelize.TEXT,
