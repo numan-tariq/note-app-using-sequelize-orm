@@ -66,4 +66,4 @@ typings/
 .next
 
 # database file
-*.sqlite
+.database.sqlite
